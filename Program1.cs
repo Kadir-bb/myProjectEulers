@@ -4,7 +4,7 @@
 
 namespace C_sharp_proje
 {
-    class Program
+    class Program1
     {
         static void Main(string[] args)
         {
