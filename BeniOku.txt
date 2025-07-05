@@ -1,0 +1,1 @@
+Bu repositoryde 'https://projecteuler.net/' sayfasındaki soruların çözümlerini ve cevaplarını C# ile bulmayı amaçlıyorum.
