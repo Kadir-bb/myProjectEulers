@@ -1,20 +1,28 @@
-﻿// 10 dan küçük doğal sayılardan 3 veya 5 in katı olan sayılar : 3, 5, 6 ve 9 dur.
-// buna göre 1000 den küçük doğal sayıların 3 veya 5 in katı olan sayıları bul.
+﻿// Bir fibonacci dizisindeki her yeni terim, kendinden önceki 2 terimin toplanması ile üretilir.
+// Elimizde 1 ve 2 ile başlayan fibonacci dizisi olsun, bu dizinin son terimi 4 milyonu geçmeyecek şekilde olsun.
+// Bu dizideki çift değerli terimlerin toplamını bul.
+
 namespace C_sharp_proje
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int toplam = 0;
-            for (int i = 0; i < 1000; i++)
+            int birinciSayi = 1, ikinciSayi = 2, uretilenSayi = 0, toplam = 2; // toplama 2 terimini dahil ettik.
+
+            while (uretilenSayi < 4000000)
             {
-                if (i % 3 == 0 || i % 5 == 0)
+                uretilenSayi = birinciSayi + ikinciSayi;
+                if (uretilenSayi % 2 == 0)
                 {
-                    toplam += i;
+                    toplam += uretilenSayi;
                 }
+                birinciSayi = ikinciSayi;
+                ikinciSayi = uretilenSayi;
             }
-            Console.WriteLine("toplam : " + toplam); // cevap : 233168
+
+            Console.WriteLine("Fibonacci dizisindeki terimlerin toplamı : " + toplam); // cevap 4613732
+
         }
     }
 
