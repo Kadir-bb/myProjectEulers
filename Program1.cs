@@ -8,27 +8,32 @@ namespace C_sharp_proje
         static void Main(string[] args)
         {
             int ustDeger, mod1, mod2;
-            char islemTipi;
+            string islemTipi;
 
             ustDeger = 1000;
             mod1 = 3;
             mod2 = 5;
-            islemTipi = '&'; // | -> veya demek, & -> ve demek
+            islemTipi = "veya"; // ve/veya işlemleri
 
-            if (SoruToplamBul(ustDeger, mod1, mod2, islemTipi) != -1)
+            if (SoruToplamBul(ustDeger, mod1, mod2, islemTipi) != -1 && islemTipi == "ve")
             {
-                Console.Write($"x £ [0,{ustDeger}), x £ (x % {mod1} == 0 {new string(islemTipi, 2)} x % {mod2} == 0) ");
+                Console.Write($"x £ [0,{ustDeger}), x £ (x % {mod1} == 0 && x % {mod2} == 0) ");
+                Console.Write($"olan x sayılarının toplamı = {SoruToplamBul(ustDeger, mod1, mod2, islemTipi)}");
+            }
+            else if (SoruToplamBul(ustDeger, mod1, mod2, islemTipi) != -1 && islemTipi == "veya")
+            {
+                Console.Write($"x £ [0,{ustDeger}), x £ (x % {mod1} == 0 || x % {mod2} == 0) ");
                 Console.Write($"olan x sayılarının toplamı = {SoruToplamBul(ustDeger, mod1, mod2, islemTipi)}");
             }
         }
 
         // Bu fonksiyon, 0 dan ustDeger değişkenine kadar (ustDeger dahil değil), mod1 ve/veya mod2 ye tam olarak bölünebilen sayıların toplamını hesaplar.
-        static int SoruToplamBul(int ustDeger_, int mod1_, int mod2_, char islemTipi_)
+        static int SoruToplamBul(int ustDeger_, int mod1_, int mod2_, string islemTipi_)
         {
             int toplam = 0;
             switch (islemTipi_)
             {
-                case '|':
+                case "veya":
                     for (int i = 0; i < ustDeger_; i++)
                     {
                         if (i % mod1_ == 0 || i % mod2_ == 0)
@@ -37,7 +42,7 @@ namespace C_sharp_proje
                         }
                     }
                     return toplam;
-                case '&':
+                case "ve":
                     for (int i = 0; i < ustDeger_; i++)
                     {
                         if (i % mod1_ == 0 && i % mod2_ == 0)
