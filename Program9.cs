@@ -19,7 +19,7 @@ namespace C_sharp_proje
 
                     if (a + b + c == toplam)
                     {
-                        Console.WriteLine(a * b * c);
+                        Console.WriteLine(a * b * c); // cevap 31875000
                         return;
                     }
                 }
