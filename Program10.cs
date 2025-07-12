@@ -6,27 +6,36 @@ namespace C_sharp_proje
     {
         static void Main(string[] args)
         {
-            long toplam = 0;
-            int sayi = 2000000; // soruda belirlenen sayı 2 milyon
+            int sayi = 2000000;
+            bool[] asalMi = new bool[sayi];
 
-            for (int i = 2; i < sayi; i++)
-            {
-                if (sayiAsalMi(i))
-                    toplam += i;
-            }
-            Console.WriteLine(toplam); // cevap 142913828922
+            Console.WriteLine($"{sayi} sayısına kadar olan asal sayıların toplamı = {asalSayilarToplami(sayi, asalMi)}");
         }
 
-        static bool sayiAsalMi(int sayi_)
+        static long asalSayilarToplami(int sayi_, bool[] asalMi_)
         {
-            for (int i = 2; i <= Math.Sqrt(sayi_); i++)
+            for (int i = 2; i < sayi_; i++)
             {
-                if (sayi_ % i == 0)
+                asalMi_[i] = true; // 0 ve 1 hariç olan sayıları asal kabul edelim
+            }
+
+            for (int i = 2; i * i < sayi_; i++)
+            {
+                if (asalMi_[i])
                 {
-                    return false;
+                    for (int j = i * i; j < sayi_; j += i)
+                    {
+                        asalMi_[j] = false;
+                    }
                 }
             }
-            return true;
+            long toplam = 0;
+            for (int i = 2; i < sayi_; i++)
+            {
+                if (asalMi_[i])
+                    toplam += i;
+            }
+            return toplam;
         }
     }
 }
