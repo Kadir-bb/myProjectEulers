@@ -15,15 +15,10 @@ namespace C_sharp_proje
             mod2 = 5;
             islemTipi = "veya"; // ve/veya işlemleri
 
-            if (SoruToplamBul(ustDeger, mod1, mod2, islemTipi) != -1 && islemTipi == "ve")
+            if (SoruToplamBul(ustDeger, mod1, mod2, islemTipi) != -1)
             {
-                Console.Write($"x £ [0,{ustDeger}), x £ (x % {mod1} == 0 && x % {mod2} == 0) ");
-                Console.Write($"olan x sayılarının toplamı = {SoruToplamBul(ustDeger, mod1, mod2, islemTipi)}");
-            }
-            else if (SoruToplamBul(ustDeger, mod1, mod2, islemTipi) != -1 && islemTipi == "veya")
-            {
-                Console.Write($"x £ [0,{ustDeger}), x £ (x % {mod1} == 0 || x % {mod2} == 0) ");
-                Console.Write($"olan x sayılarının toplamı = {SoruToplamBul(ustDeger, mod1, mod2, islemTipi)}");
+                Console.Write($"0 dan {ustDeger} sayısına kadar olan, {mod1} {islemTipi} {mod2} sayılarına kalansız bölünebilen ");
+                Console.Write($"sayıların toplamı = {SoruToplamBul(ustDeger, mod1, mod2, islemTipi)}");
             }
         }
 
